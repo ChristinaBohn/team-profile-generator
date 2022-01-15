@@ -1,3 +1,5 @@
+const employees = [];
+
 // Actions needed:
 
 // Ask user for manager info
@@ -34,4 +36,4 @@
 
         // IF 'Be done' -> Build an HTML page
 
-// Use all of the collected employee data to build an HTML page
+// Use all of the collected employee data to build an HTML page, use 'employees[]'
