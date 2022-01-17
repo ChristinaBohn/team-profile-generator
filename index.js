@@ -79,7 +79,7 @@ const nextQuestion = [
         message: 'What type of team member would you like to add?',
         choices: ['Engineer', 'Intern', 'I am done adding team members']
     }
-]
+];
 
 // Actions needed:
 
