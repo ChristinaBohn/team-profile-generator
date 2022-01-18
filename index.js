@@ -1,6 +1,10 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Manager');
+const Intern = require('./lib/Manager');
+
 const employees = [];
 
 const managerQuestions = [
@@ -84,12 +88,19 @@ const nextQuestion = [
 // Actions needed:
 
 // Ask user for manager info
+async function askForManagerInfo() {
 
     // Prompt user for the data
+    const answers = await inquirer.prompt( /* questions */ )
 
-        // THEN create and store an object for the Manager
+    // THEN create and store an object for the Manager
+    employee.push( new Manager( /* pass in data from inquirer */ ));
 
-        // THEN Ask user what they would like to do next
+    // THEN Ask user what they would like to do next
+    askForNextAction();
+
+    }
+
 
 // Ask user for engineer info
 
