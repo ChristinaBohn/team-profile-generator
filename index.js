@@ -85,13 +85,12 @@ const nextQuestion = [
     }
 ];
 
-// Actions needed:
 
 // Ask user for manager info
 async function askForManagerInfo() {
 
     // Prompt user for the data
-    const answers = await inquirer.prompt( /* questions */ )
+    const answers = await inquirer.prompt( managerQuestions )
 
     // THEN create and store an object for the Manager
     employee.push( new Manager( /* pass in data from inquirer */ ));
@@ -103,22 +102,35 @@ async function askForManagerInfo() {
 
 
 // Ask user for engineer info
+async function askForEngineerInfo() {
 
     // Prompt user for the data
+    const answers = await inquirer.prompt( engineerQuestions )
 
-        // THEN create and store an object for the Engineer
+    // THEN create and store an object for the Engineer
+    employee.push( new Engineer( /* pass in data from inquirer */ ));
 
-        // THEN Ask user what they would like to do next
+    // THEN Ask user what they would like to do next
+    askForNextAction();
+
+    }
 
 // Ask user for intern info
+async function askForInternInfo() {
 
     // Prompt user for the data
+    const answers = await inquirer.prompt( internQuestions )
 
-        // THEN create and store an object for the Intern
+    // THEN create and store an object for the Intern
+    employee.push( new Manager( /* pass in data from inquirer */ ));
 
-        // THEN Ask user what they would like to do next
+    // THEN Ask user what they would like to do next
+    askForNextAction();
+
+    }
 
 // Ask user what they would like to do next
+function askForNextAction() {
 
     // Add Engineer, Add Intern, or Be done
 
@@ -127,5 +139,7 @@ async function askForManagerInfo() {
         // IF 'Add Intern' -> Ask user for intern info
 
         // IF 'Be done' -> Build an HTML page
+
+}
 
 // Use all of the collected employee data to build an HTML page, use 'employees[]'
