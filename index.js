@@ -1,5 +1,9 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const generateTeam = require('./src/page-template')
+
+const DIST_DIR = path.resolve(__dirname, 'dist')
+const distPath = path.join(DIST_DIR, 'team.html')
 
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Manager');
@@ -76,7 +80,7 @@ const internQuestions = [
     }
 ];
 
-const nextQuestion = [
+const nextActionQuestion = [
     {
         type: 'list',
         name: 'nextQuestion',
@@ -109,6 +113,7 @@ async function askForEngineerInfo() {
 
     // THEN create and store an object for the Engineer
     employee.push( new Engineer( /* pass in data from inquirer */ ));
+    console.log(`The engineer ${answers.engineerName} has been added`)
 
     // THEN Ask user what they would like to do next
     askForNextAction();
@@ -122,24 +127,46 @@ async function askForInternInfo() {
     const answers = await inquirer.prompt( internQuestions )
 
     // THEN create and store an object for the Intern
-    employee.push( new Manager( /* pass in data from inquirer */ ));
+    employee.push( new Intern( /* pass in data from inquirer */ ));
 
     // THEN Ask user what they would like to do next
     askForNextAction();
 
     }
 
+function writeToFile() {
+    if(!fs.existsSync(DIST_DIR)) {
+        fs.mkdirSync(DIST_DIR)
+    }
+    fs.writeFileSync(distPath, generateTeam(employees), 'utf-8');
+}
+
 // Ask user what they would like to do next
-function askForNextAction() {
+async function askForNextAction() {
 
     // Add Engineer, Add Intern, or Be done
+    const answers =  await inquirer.prompt( nextActionQuestion )
 
         // IF 'Add Engineer' -> Ask user for engineer info
+        if ( answers === 'Engineer' ) {
+            askForEngineerInfo();
+        }
 
         // IF 'Add Intern' -> Ask user for intern info
+        if ( answers === 'Intern' ) {
+            askForInternInfo();
+        }
 
         // IF 'Be done' -> Build an HTML page
+        if ( answers === 'I am done adding team members' ) {
+            // then call build html function
+            writeToFile();
+        }
 
 }
 
+askForManagerInfo();
+
 // Use all of the collected employee data to build an HTML page, use 'employees[]'
+// fs file thing
+
