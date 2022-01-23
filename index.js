@@ -1,9 +1,10 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const generateTeam = require('./src/page-template')
+const generateTeam = require('./src/page-template');
 
-const DIST_DIR = path.resolve(__dirname, 'dist')
-const distPath = path.join(DIST_DIR, 'team.html')
+const path = require('path');
+const DIST_DIR = path.resolve(__dirname, 'dist');
+const distPath = path.join(DIST_DIR, 'team.html');
 
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Manager');
