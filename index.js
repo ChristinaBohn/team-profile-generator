@@ -2,8 +2,8 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const generateTeam = require('./src/page-template')
 
-// const DIST_DIR = path.resolve(__dirname, 'dist')
-// const distPath = path.join(DIST_DIR, 'team.html')
+const DIST_DIR = path.resolve(__dirname, 'dist')
+const distPath = path.join(DIST_DIR, 'team.html')
 
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Manager');
@@ -169,6 +169,27 @@ async function askForInternInfo() {
     
 askForManagerInfo();
 
-// Use all of the collected employee data to build an HTML page, use 'employees[]'
-// fs file thing - reference README generator
+
+
+// Imported from README generator:
+function writeToFile( filename, data ) {
+    fs.writeFileSync( filename, data, (err) =>
+    
+    err ? console.error(err) : console.log( 'Your README.md has been created successfully!' )
+    );
+}
+
+// TODO: Create a function to initialize app
+function init() {
+    inquirer
+        .prompt( questions )
+        .then( answers => {
+            const userData = generateMarkdown( answers );
+            writeToFile( 'sample-README.md', userData )
+            console.log( answers );
+        })
+}
+
+// Function call to initialize app
+init();
 
