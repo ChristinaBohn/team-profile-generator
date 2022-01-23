@@ -6,8 +6,8 @@ describe( "Engineer", () => {
         
         it( 'Can set Github via constructor arguments', () => {
             const github  = 'sam@github.com';
-            const engineer = new Engineer( github );
-            expect( engineer.name ).toBe( github ) ;
+            const engineer = new Engineer( 'Sam', 9, 'sam@mail.com', github );
+            expect( engineer.github ).toBe( github ) ;
         })
     
     });

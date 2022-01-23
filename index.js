@@ -145,7 +145,7 @@ async function askForNextAction() {
     
     if ( answer.nextQuestion === 'I am done adding team members' ) {
 
-        // then call build html
+        // then build Team Profile html
         writeToFile( 'team.html', employees );
         console.log( employees );
     }

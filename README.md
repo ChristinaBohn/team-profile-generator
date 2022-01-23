@@ -18,11 +18,10 @@ This is a command-line application that will allow users to input information ab
 
 ## What I Learned
 
-I appreciate the ease of using template literals to structure and print text. I first created a sample README.md file containing all of the headers and content needed, and then could copy and paste each part where it was needed into the code.
+This was an intimidating project to begin - requiring more code written from scratch than anything I've worked on yet. Breaking the application down into smaller tasks and keeping the code in an organized file structure was very helpful in moving forward.
 
-I learned the importance and usefulness of documentation for resources like Inquirer. There were many options available for questions - I was easily able to find the best fit for the information I wanted to gather to build a README.
+Reading API documentation was another huge help in this project, as well as seeing how writing unit tests can help in designing simple code that accomplishes its given task.
 
-One challege I faced was accidentally pushing up a copy of a generated README file, writing over the README for this repo, because of a mistake in naming the new file in the index.js file. This was fixed by adding "sample-" in front of the new README.md file name.
 
 ## Usage
 
