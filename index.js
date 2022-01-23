@@ -89,107 +89,67 @@ const nextActionQuestion = [
     }
 ];
 
-
-// Ask user for manager info
 async function askForManagerInfo() {
 
-    // Prompt user for the data
     const answers = await inquirer.prompt( managerQuestions )
 
-    // THEN create and store an object for the Manager
     employees.push( new Manager( answers ));
     console.log(`Manager ${answers.managerName} has been added`)
 
-    // THEN Ask user what they would like to do next
     askForNextAction();
 
-    }
+}
 
 
-// Ask user for engineer info
 async function askForEngineerInfo() {
 
-    // Prompt user for the data
     const answers = await inquirer.prompt( engineerQuestions )
 
-    // THEN create and store an object for the Engineer
     employees.push( new Engineer( answers ));
     console.log(`Engineer ${answers.engineerName} has been added`)
 
-    // THEN Ask user what they would like to do next
     askForNextAction();
 
-    }
+}
 
-// Ask user for intern info
 async function askForInternInfo() {
 
-    // Prompt user for the data
     const answers = await inquirer.prompt( internQuestions )
 
-    // THEN create and store an object for the Intern
     employees.push( new Intern( answers ));
     console.log(`Intern ${answers.internName} has been added`)
 
-    // THEN Ask user what they would like to do next
     askForNextAction();
 
-    }
+}
 
-    function writeToFile() {
-        if(!fs.existsSync(DIST_DIR)) {
-            fs.mkdirSync(DIST_DIR)
-        }
-        fs.writeFileSync(distPath, generateTeam(employees), 'utf-8');
+function writeToFile() {
+    if(!fs.existsSync( DIST_DIR )) {
+        fs.mkdirSync( DIST_DIR )
+    }
+    fs.writeFileSync( distPath, generateTeam( employees ), 'utf-8');
+}
+
+async function askForNextAction() {
+    
+    const answer =  await inquirer.prompt( nextActionQuestion )
+    
+    if ( answer.nextQuestion === 'Engineer' ) {
+        askForEngineerInfo();
     }
     
-    // Ask user what they would like to do next
-    async function askForNextAction() {
-        
-        // Add Engineer, Add Intern, or Be done
-        const answer =  await inquirer.prompt( nextActionQuestion )
-        
-        // IF 'Add Engineer' -> Ask user for engineer info
-        if ( answer.nextQuestion === 'Engineer' ) {
-            askForEngineerInfo();
-        }
-        
-        // IF 'Add Intern' -> Ask user for intern info
-        if ( answer.nextQuestion === 'Intern' ) {
-            askForInternInfo();
-        }
-        
-        // IF 'Be done' -> Build an HTML page
-        if ( answer.nextQuestion === 'I am done adding team members' ) {
-            // then call build html function
-            writeToFile();
-        }
-        
+    if ( answer.nextQuestion === 'Intern' ) {
+        askForInternInfo();
     }
+    
+    if ( answer.nextQuestion === 'I am done adding team members' ) {
+
+        // then call build html
+        writeToFile( 'team.html', employees );
+        console.log( employees );
+    }
+    
+}
     
 askForManagerInfo();
-
-
-
-// Imported from README generator:
-function writeToFile( filename, data ) {
-    fs.writeFileSync( filename, data, (err) =>
-    
-    err ? console.error(err) : console.log( 'Your README.md has been created successfully!' )
-    );
-}
-
-// TODO: Create a function to initialize app
-function init() {
-    inquirer
-        .prompt( questions )
-        .then( answers => {
-            const userData = generateMarkdown( answers );
-            writeToFile( 'sample-README.md', userData )
-            console.log( answers );
-        })
-}
-
-// Function call to initialize app
-init();
 
