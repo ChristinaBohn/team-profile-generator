@@ -94,8 +94,8 @@ async function askForManagerInfo() {
 
     const answers = await inquirer.prompt( managerQuestions )
 
-    employees.push( new Manager( answers ));
-    console.log(`Manager ${answers.managerName} has been added`)
+    employees.push( new Manager( answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber ));
+    console.log(`Manager ${answers.managerName} has been added to your team.`)
 
     askForNextAction();
 
@@ -106,8 +106,8 @@ async function askForEngineerInfo() {
 
     const answers = await inquirer.prompt( engineerQuestions )
 
-    employees.push( new Engineer( answers ));
-    console.log(`Engineer ${answers.engineerName} has been added`)
+    employees.push( new Engineer( answers.engineerName, answers.engineerId, answers.engineerEmail, answers.github ));
+    console.log(`Engineer ${answers.engineerName} has been added to your team.`)
 
     askForNextAction();
 
@@ -117,8 +117,8 @@ async function askForInternInfo() {
 
     const answers = await inquirer.prompt( internQuestions )
 
-    employees.push( new Intern( answers ));
-    console.log(`Intern ${answers.internName} has been added`)
+    employees.push( new Intern(answers.internName, answers.internId, answers.internEmail, answers.school ));
+    console.log(`Intern ${answers.internName} has been added to your team.`)
 
     askForNextAction();
 

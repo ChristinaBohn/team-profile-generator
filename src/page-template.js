@@ -4,7 +4,7 @@ const generateTeam = team => {
         
         // Manager info card
         return `
-        <div class="card border-info shadow" style="width: 18rem;">
+        <div class="card border-info mx-auto shadow" style="width: 18rem;">
             <div class="card-header text-center fw-bold">
               Manager
             </div>
@@ -21,7 +21,7 @@ const generateTeam = team => {
         
         // Engineer info card
         return `
-        <div class="card border-info shadow" style="width: 18rem;">
+        <div class="card border-info mx-auto shadow" style="width: 18rem;">
             <div class="card-header text-center">
               Engineer
             </div>
@@ -38,7 +38,7 @@ const generateTeam = team => {
         
         // Intern info card
         return `
-        <div class="card border-info shadow" style="width: 18rem;">
+        <div class="card border-info mx-auto shadow" style="width: 18rem;">
             <div class="card-header text-center">
               Intern
             </div>
